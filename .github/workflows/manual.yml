@@ -4,6 +4,7 @@ on:
     workflow_dispatch:
       inputs:
         environment:
+          type: choice
           options:
             - dev
             - staging
