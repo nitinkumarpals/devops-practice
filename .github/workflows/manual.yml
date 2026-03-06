@@ -2,6 +2,12 @@ name: Manual Hello Workflow
 
 on:
     workflow_dispatch:
+      inputs:
+        environment:
+          options:
+            - dev
+            - staging
+            - production
 
 jobs:
     manual-jobs:
