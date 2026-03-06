@@ -15,4 +15,13 @@ jobs:
       - name: say hello to user
         run: echo "hello $USER"
 
+  details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show versions
+        run: docker --version && python --version && node --version
+
+      - name: show more details
+        run: free -h && df -h
+
     
