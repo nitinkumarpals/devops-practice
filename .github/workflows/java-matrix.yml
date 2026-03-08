@@ -22,7 +22,7 @@ jobs:
                 distribution: "temurin"
             
             - name: run linting
-              run : ./mvnw verify
+              run : mvn verify
 
             - name : finish
               run : echo "Validation complete!"
