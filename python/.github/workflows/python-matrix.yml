@@ -1,0 +1,21 @@
+on:
+    push:
+        branches: [main]
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout code
+              uses: actions/checout@v4
+
+            - name: setup python
+              uses: actions/setup-python@v5
+              with:
+                version: "3.13"
+            
+            - name: install dependenicies
+              run : pip install -r requirenments.txt
+
+            - name: run linter
+              run : flake8 app.py 
