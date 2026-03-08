@@ -54,7 +54,6 @@ def update_item(item_id: int):
 
 @app.route("/items/<int:item_id>", methods=["DELETE"])
 def delete_item(item_id: int):
-    """Remove an item."""
     if item_id in _items:
         del _items[item_id]
         return "", 204
