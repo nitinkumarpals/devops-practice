@@ -1,0 +1,92 @@
+student: !!seq
+  - marks
+  - name
+  - logo
+
+#like this also
+cities: [new delhi, mumbai, chennai]
+
+#some of the seq key will be empty
+#sparse seq
+sparse seq:
+  - 1
+  - name
+  -
+  - Null
+  - sup
+---
+#nested sequence
+- - mango
+  - apple
+  - banana
+- - marks
+  - name
+  - roll num
+---
+# key: value pairs are called maps
+#maps
+{ mango: "yello fruit", strawberry: "red fruit", greenApple: " green fruit" }
+---
+name: "Nitin Kumar Pal"
+---
+#nested mapping map within a map
+name: "Nitin Kumar Pal"
+job: "devops"
+address:
+  city: "New Delhi"
+  state: "Delhi"
+  pincode: 110001
+---
+#same as
+name: "Nitin Kumar Pal"
+job: "devops"
+address: { city: "New Delhi", state: "Delhi", pincode: 110001 }
+
+#pairs: it may have duplicate key
+pair example:
+  - job: "devops"
+  - job: "dev"
+#same as
+example pair: [job: "devops", job: "dev"]
+# this will be an array of hash table
+# !!set will allow you to have unique values
+names: !!set
+ ? Nitin
+ ? Kumar
+ ? Pal
+
+---
+
+#dictionary entire sequence can be represented as a value
+people:
+  - name: Nitin
+    job: devops
+    age: 25
+    height: 5.7
+  - name: Kumar
+    job: dev
+    age: 25
+    height: 5.7
+
+#reusing properties using anchors 
+likings: &likes
+ fav fruit: apple
+ fav color: red
+ dislike: orange
+
+person1:
+ name: Nitin
+ job: devops
+ <<: *likes
+ 
+person2:
+ name: Kumar
+ job: dev
+ <<: *likes
+ dislike: banana #this will override the value of dislike
+
+person3:
+ name: Pal
+ job: dev
+ <<: *likes
+

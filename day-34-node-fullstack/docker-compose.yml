@@ -1,0 +1,63 @@
+services:
+
+  frontend:
+    build: ./frontend
+
+    ports:
+      - "80:80"
+    depends_on:
+        backend:
+          condition: service_healthy
+
+    networks:
+      - node-app-network
+
+  backend:
+    build: ./backend
+
+    ports:
+      - "3000:3000"
+    
+    depends_on:
+        mongo:
+          condition: service_healthy
+    
+    networks:
+      - node-app-network
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - node-app-network
+
+    healthcheck:
+      test: ["CMD", "mongosh","--eval", "db.runCommand({ ping:1 })"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    networks:
+      - node-app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+
+networks:
+
+  node-app-network:
+
+
+volumes:
+
+  mongo-data:
+
+  

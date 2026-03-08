@@ -1,0 +1,53 @@
+#variable:type
+#strings variables
+myself: Nitin Kumar Pal
+fruit: "apple"
+job: 'devops'
+
+#right 
+bio: |
+  Hi i am  Nitin Kumar Pal
+  i am a devops engineer
+#wrong
+bio: Hi i am  Nitin Kumar Pal
+i am a devops engineer
+
+#write a single line in multiple lines
+message: >
+  this will
+  all be
+  written
+  in one line
+---
+#same as
+message: this will all be written in one line
+message2: !!str this will all be written in one line
+
+number: 32823
+marks: 90.82
+booleanValue: No #false, no, off, n, FALSE, OFF, N
+                 #true, yes, on, y, TRUE, ON, Y
+
+#specify the type explicitly
+zero: !!int 0
+positive: !!int 10
+negative: !!int -10
+binaryNum: !!binary 10101010
+octalNumber: !!int 06574
+hexNumber: !!int 0x123456
+commaValue:  +1_000_000 #1,000,000
+exponentValue: 1e6
+
+#float
+pi: !!float 3.14
+infinity: !!float .inf
+not a num:  .nan
+
+#null
+nullValue: !!null Null #null, Null, NULL, ~
+~: this is a null key
+
+#date and time
+date: !!timestamp 2021-01-01T00:00:00Z
+date2: 2021-01-01T00:00:00Z
+indian time:  2021-01-01T00:00:00+05:30

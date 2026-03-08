@@ -1,0 +1,32 @@
+on:
+    push:
+        branches: 
+            - 'main'
+        paths:
+            - 'node/**'
+
+jobs:
+    validate:
+
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: node
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+
+            - name: setup node
+              uses: actions/setup-node@v3
+              with:
+                node-version: "24"
+            
+            - name: install dependencies
+              run: npm install
+
+            - name: run linting, tests and build
+              run: npm run verify
+
+            - name : finish
+              run : echo "Validation complete!"

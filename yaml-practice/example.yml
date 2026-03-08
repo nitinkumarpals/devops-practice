@@ -1,0 +1,11 @@
+School:
+ - name: GPS
+   location: Muzaffarnagar
+   principle: Someone
+   students:
+    - name: Nitin
+      roll: 21
+      marks: 90
+    - name: Sunny
+      roll: 22
+      marks: 95

@@ -1,0 +1,19 @@
+#key value pair
+"key": "value"
+1: "roll number"
+---
+#lists
+- item1
+- item2
+- item3
+---
+#block
+cities:
+ - new delhi
+ - mumbai
+ - chennai
+---
+cities: [new delhi, mumbai, chennai]
+---
+#maps
+{mango: "yello fruit", strawberry: "red fruit", greenApple: " green fruit"}
