@@ -1,0 +1,29 @@
+on:
+    push:
+        branches: [main]
+        paths: 
+            - 'java/**'
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: java
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+
+            - name: setup java
+              uses: actions/setup-java@v3
+              with:
+                java-version: "17"
+                distribution: "temurin"
+            
+            - name: run linting
+              run : ./mvnw verify
+
+            - name : finish
+              run : echo "Validation complete!"
+           
