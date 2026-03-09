@@ -62,7 +62,7 @@ def delete_item(item_id: int):
 
 @app.route("/health", methods=["GET"])
 def health_check():
-    """Simple health check endpoint."""
+    """Simple health check endpoint"""
     return jsonify({"status": "ok"}), 200
 
 
