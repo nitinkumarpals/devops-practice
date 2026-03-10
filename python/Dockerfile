@@ -4,10 +4,13 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt 
+RUN pip install --no-cache -r requirements.txt 
 
 COPY . .
 
+RUN useradd -m appuser
+USER appuser
+
 EXPOSE 5000
 
-CMD ["python","app.py"]
+CMD ["gunicorn","--workers","3","--bind","0.0.0.0:5000","app:app"]
