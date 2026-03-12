@@ -1,9 +1,10 @@
 name: Deploy node app
 
 on:
-  workflows: ["Docker Build and Push"]
-  types: [completed]
-  branches: [main]
+  workflow_run:
+      workflows: ["Docker Build and Push"]
+      types: [completed]
+      branches: [main]
 
 jobs:
   Deploy:
