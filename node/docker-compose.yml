@@ -2,4 +2,4 @@ services:
   web:
     image: ${DOCKERHUB_USERNAME}/node-app:latest
     ports:
-      -"3000:3000"
+      - "3000:3000"
