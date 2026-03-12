@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'python/**'
+      - 'node/**'
   workflow_dispatch: 
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: python
+        working-directory: node
 
     steps:
       - name: code checkout
@@ -27,11 +27,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-            context: ./python
-            file: ./python/Dockerfile
+            context: ./node
+            file: ./node/Dockerfile
             push: true
             tags: |
-              ${{ vars.DOCKERHUB_USERNAME }}/pyhton-app:${{ github.sha }}
-              ${{ vars.DOCKERHUB_USERNAME }}/pyhton-app:latest
+              ${{ vars.DOCKERHUB_USERNAME }}/node-app:${{ github.sha }}
+              ${{ vars.DOCKERHUB_USERNAME }}/node-app:latest
 
           
