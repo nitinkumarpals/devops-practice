@@ -9,6 +9,10 @@ jobs:
     validate:
 
         runs-on: ubuntu-latest
+        strategy:
+          fail-fast: true
+          matrix:
+            node-version: [18,20,22]
         defaults:
             run:
                 working-directory: node
@@ -20,7 +24,8 @@ jobs:
             - name: setup node
               uses: actions/setup-node@v3
               with:
-                node-version: "24"
+                node-version: ${{ matrix.node-version }}
+            - run: node -v
             
             - name: install dependencies
               run: npm install
