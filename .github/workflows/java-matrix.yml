@@ -1,9 +1,10 @@
 on:
-    push:
-        branches: [main]
-        paths: 
-            - 'java/**'
-
+    # push:
+    #     branches: [main]
+    #     paths: 
+    #         - 'java/**'
+    workflow_dispatch:
+    
 jobs:
     validate:
         runs-on: ubuntu-latest

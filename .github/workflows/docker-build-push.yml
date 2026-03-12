@@ -1,10 +1,10 @@
 name: Docker Build and Push
 
 on: 
-  push:
-    branches: [ main ]
-    paths:
-      - 'node/**'
+  # push:
+  #   branches: [ main ]
+  #   paths:
+  #     - 'node/**'
   workflow_dispatch: 
 
 jobs:
