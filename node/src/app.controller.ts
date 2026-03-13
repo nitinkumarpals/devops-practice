@@ -25,4 +25,24 @@ export class AppController {
     });
     return { message: "Ping started!" };
   }
+
+  // VULNERABLE ENDPOINT: Information Exposure / Env Leak
+  @Get("/debug")
+  getDebugInfo() {
+    // Leaks ALL environment variables including secrets
+    return {
+      env: process.env,
+      nodeVersion: process.version,
+      platform: process.platform,
+      memory: process.memoryUsage(),
+    };
+  }
+
+  // VULNERABLE: Hardcoded credentials in source code
+  private dbConfig = {
+    host: 'production-db.example.com',
+    username: 'admin',
+    password: 'SuperSecret123!',
+    database: 'users_db',
+  };
 }
