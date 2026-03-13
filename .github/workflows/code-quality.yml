@@ -1,0 +1,39 @@
+# Linting and SAST scan
+name: Code Quality
+
+on:
+  workflow_call:
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        strategy:
+          fail-fast: false
+          matrix: 
+            node-version: [18,20,22]
+          defaults:
+            working-directory: node
+
+        steps:
+          - name: checkout code
+            uses: actions/checkout@v4
+
+          - name: setup node
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+          - run: node -v
+
+          - name: install dependencies
+            run: npm install
+
+          - name: run linting, tests and build
+            run: npm run verify
+
+          - name: run SAST
+            uses: snyk/actions/node@main
+            env:
+              SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            with:
+              command: code test
+    
