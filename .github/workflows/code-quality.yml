@@ -11,9 +11,9 @@ jobs:
           fail-fast: false
           matrix: 
             node-version: [18,20,22]
-          defaults:
+        defaults:
+          run:
             working-directory: node
-
         steps:
           - name: checkout code
             uses: actions/checkout@v4
