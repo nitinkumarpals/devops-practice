@@ -5,7 +5,7 @@ on:
   #   branches: [ main ]
   #   paths:
   #     - 'node/**'
-  workflow_dispatch: 
+  workflow_call: 
 
 jobs:
   build-and-push:
