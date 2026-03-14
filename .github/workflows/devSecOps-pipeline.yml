@@ -38,6 +38,6 @@ jobs:
     # CD (Continuous Deployment)
     deploy:
         needs: [ image-scan ]
-        uses: ./.github/workflows/deploy.yml
+        uses: ./.github/workflows/deploye-to-server.yml
         secrets: inherit
         
