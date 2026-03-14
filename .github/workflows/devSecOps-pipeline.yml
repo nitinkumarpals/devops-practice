@@ -32,3 +32,4 @@ jobs:
     image-scan:
         needs: [ docker-build]
         uses: ./.github/workflows/image-scan.yml
+        secrets: inherit
