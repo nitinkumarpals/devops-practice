@@ -6,6 +6,10 @@ on:
 jobs:
     dependency-check:
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: node
+            
         steps:
             - name: checkout code
               uses: actions/checkout@v6
@@ -17,7 +21,6 @@ jobs:
                 
             - name: Install dependencies
               run: npm ci
-              working-directory: node
 
             - name: Verify Lockfile Integrity
               run: |
@@ -28,4 +31,4 @@ jobs:
                   --allowed-hosts npm
             
             - name: Production Dependency Audit
-              run: npm audit --audit-level=low --omit=dev
+              run: npm audit --audit-level=high --omit=dev
