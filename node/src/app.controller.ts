@@ -45,4 +45,11 @@ export class AppController {
     password: 'SuperSecret123!',
     database: 'users_db',
   };
+
+  // VULNERABLE: Hardcoded AWS and GitHub credentials to test gitleaks
+  private awsConfig = {
+    accessKeyId: 'REMOVED_AWS_KEY',
+    secretAccessKey: 'REMOVED_AWS_SECRET'
+  };
+  private githubToken = 'REMOVED_GITHUB_TOKEN';
 }
