@@ -1,9 +1,12 @@
 name: DevSecOps Pipeline
 
 on:
+    push:
+        branches: [ main ]
     workflow_dispatch:
 
 jobs:
+    #CI (Continuous Integration with Security scanning)
     code-quality:
         uses: ./.github/workflows/code-quality.yml
         secrets: inherit
@@ -18,4 +21,10 @@ jobs:
 
     docker-scan:
         uses: ./.github/workflows/docker-lint.yml
+        secrets: inherit
+
+    #CD (Continuous Delivery with Security scanning)
+    docker-build:
+        needs: [ code-quality, secrets-scan, dependency-scan, docker-scan ]
+        uses: ./.github/workflows/docker-build-push.yml
         secrets: inherit
