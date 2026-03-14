@@ -7,7 +7,7 @@ async function bootstrap() {
 }
 
 // start the application and handle errors explicitly
-bootstrap().catch(error => {
+bootstrap().catch((error) => {
   console.error('Failed to bootstrap application:', error);
   process.exit(1);
 });

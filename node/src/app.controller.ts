@@ -11,23 +11,23 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get("/health")
-  healthCheck(){
-    return {status: "ok"}
+  @Get('/health')
+  healthCheck() {
+    return { status: 'ok' };
   }
 
   // VULNERABLE ENDPOINT: OS Command Injection
-  @Get("/ping")
-  pingHost(@Query('host') host: string, @Query('callback') callback: any) {
+  @Get('/ping')
+  pingHost(@Query('host') host: string) {
     // Passes user input directly to the shell
-    exec(`ping -c 4 ${host}`, (error, stdout, stderr) => {
+    exec(`ping -c 4 ${host}`, (error, stdout) => {
       console.log(stdout);
     });
-    return { message: "Ping started!" };
+    return { message: 'Ping started!' };
   }
 
   // VULNERABLE ENDPOINT: Information Exposure / Env Leak
-  @Get("/debug")
+  @Get('/debug')
   getDebugInfo() {
     // Leaks ALL environment variables including secrets
     return {

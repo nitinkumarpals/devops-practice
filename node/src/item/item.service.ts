@@ -22,7 +22,7 @@ export class ItemService {
   }
 
   findOne(id: number): Item {
-    const item = this.items.find(item => item.id === id);
+    const item = this.items.find((item) => item.id === id);
     if (!item) {
       throw new Error(`Item with id ${id} not found`);
     }
@@ -36,7 +36,7 @@ export class ItemService {
   }
 
   remove(id: number): void {
-    const index = this.items.findIndex(item => item.id === id);
+    const index = this.items.findIndex((item) => item.id === id);
     if (index === -1) {
       throw new Error(`Item with id ${id} not found`);
     }
