@@ -23,13 +23,21 @@ jobs:
         uses: ./.github/workflows/docker-lint.yml
         secrets: inherit
 
-    #CD (Continuous Delivery with Security scanning)
+    # Build and Push Docker Image
     docker-build:
         needs: [ code-quality, secrets-scan, dependency-scan, docker-scan ]
         uses: ./.github/workflows/docker-build-push.yml
         secrets: inherit
-    
+
+    # Image Security Scanning
     image-scan:
         needs: [ docker-build]
         uses: ./.github/workflows/image-scan.yml
         secrets: inherit
+
+    # CD (Continuous Deployment)
+    deploy:
+        needs: [ image-scan ]
+        uses: ./.github/workflows/deploy.yml
+        secrets: inherit
+        
