@@ -17,8 +17,8 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_TOKEN}}
 
             - name: Trivy Scanner
-              uses: aquasecurity/trivy-action@0.33.1
+              uses: aquasecurity/trivy-action@0.28.0
               with:
-                image-ref: 'docker.io/gtthreeone/node-app:latest'
+                image-ref: 'docker.io/${{ vars.DOCKERHUB_USERNAME }}/node-app:latest'
                 severity: 'CRITICAL,HIGH'
                 exit-code: '1'
