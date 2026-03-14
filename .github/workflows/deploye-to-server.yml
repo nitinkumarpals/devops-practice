@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Docker Compose FIle
-              uses: appleboy/scp-aciton@v1
+              uses: appleboy/scp-action@v1
 
             - name: SSH to prod server
               uses: appleboy/ssh-action@v1
