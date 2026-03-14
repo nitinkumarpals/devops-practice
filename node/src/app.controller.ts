@@ -4,7 +4,7 @@ import { exec } from 'child_process';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @Get()
   getHello(): string {
@@ -47,9 +47,9 @@ export class AppController {
   };
 
   // VULNERABLE: Hardcoded AWS and GitHub credentials to test gitleaks
-//   private awsConfig = {
-//     accessKeyId: 'REMOVED_AWS_KEY',
-//     secretAccessKey: 'REMOVED_AWS_SECRET'
-//   };
-//   private githubToken = 'REMOVED_GITHUB_TOKEN';
-// }
+  //   private awsConfig = {
+  //     accessKeyId: 'REMOVED_AWS_KEY',
+  //     secretAccessKey: 'REMOVED_AWS_SECRET'
+  //   };
+  //   private githubToken = 'REMOVED_GITHUB_TOKEN';
+}
