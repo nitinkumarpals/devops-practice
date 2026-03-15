@@ -30,7 +30,7 @@ jobs:
                 target: ~/devops
                 strip_components: 1
 
-            - name: SSH to prod server && create app folder
+            - name: Deploy to server
               uses: appleboy/ssh-action@v1
               with: 
                 host: ${{ secrets.EC2_SSH_HOST }}
