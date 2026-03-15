@@ -31,13 +31,13 @@ jobs:
 
     # Image Security Scanning
     image-scan:
-        needs: [ docker-build]
+        needs: [ docker-build ]
         uses: ./.github/workflows/image-scan.yml
         secrets: inherit
 
     # CD (Continuous Deployment)
     deploy:
         needs: [ image-scan ]
-        uses: ./.github/workflows/deploye-to-server.yml
+        uses: ./.github/workflows/deploy-to-server.yml
         secrets: inherit
         
