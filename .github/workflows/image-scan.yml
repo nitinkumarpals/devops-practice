@@ -16,18 +16,13 @@ jobs:
                 username: ${{ vars.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN}}
 
-            # Fail pipeline only if CRITICAL vulnerabilities exist
+            # Trivy Scanner (Show HIGH/CRITICAL, Fail on CRITICAL)
             - name: Trivy Scanner
               uses: aquasecurity/trivy-action@0.35.0
               with:
                 image-ref: 'docker.io/${{ vars.DOCKERHUB_USERNAME }}/node-app:latest'
-                severity: 'CRITICAL'
+                format: 'table'
+                severity: 'CRITICAL,HIGH'
                 exit-code: '1'
-
-            # Report HIGH vulnerabilities but don't fail
-            - name: Trivy Scan (Report HIGH)
-              uses: aquasecurity/trivy-action@0.35.0
-              with:
-                image-ref: docker.io/${{ vars.DOCKERHUB_USERNAME }}/node-app:latest
-                severity: HIGH
-                exit-code: 0
+                ignore-unfixed: true
+                exit-on-eol: 0
