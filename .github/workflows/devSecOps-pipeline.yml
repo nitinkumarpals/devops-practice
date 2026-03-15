@@ -5,6 +5,10 @@ on:
         branches: [ main ]
     workflow_dispatch:
 
+permissions:
+    contents: read
+    security-events: write
+
 jobs:
     #CI (Continuous Integration with Security scanning)
     code-quality:
