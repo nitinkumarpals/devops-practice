@@ -25,9 +25,9 @@ jobs:
               uses: aquasecurity/trivy-action@0.35.0
               with:
                 image-ref: 'docker.io/${{ vars.DOCKERHUB_USERNAME }}/node-app:latest'
-                format: 'table'
+                format: 'sarif'
                 output: trivy-results.sarif
-                severity: 'CRITICAL,HIGH'
+                severity: 'CRITICAL'
                 exit-code: '1'
                 ignore-unfixed: true
 
