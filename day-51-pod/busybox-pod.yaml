@@ -9,4 +9,4 @@ spec:
   containers:
     - name: busybox
       image: busybox:latest
-      command: ["sh", "-c", "echo hello from busybox && sleep 3600"]
+      command: ["sh", "-c", "echo hello world  from busybox && sleep 3600"]
