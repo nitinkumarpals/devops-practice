@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dynamic-pod
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["/bin/sh","-c"]
+    args:
+      - echo "Hello from dynamic pod" >> /data/message.txt;
+          sleep 3600;
+    volumeMounts:
+      - name: storage
+        mountPath: /data
+  volumes:
+    - name: storage
+      persistentVolumeClaim:
+        claimName: dynamic-pvc
